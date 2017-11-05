@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NodeJs ddosAttack</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+  <form onsubmit="">
+
+    <div class="row justify-content-center" style="text-align: center">
+      <div class="form-group col-2">
+    <input id="url" type="text" class="form-control ">
+      </div>
+      <br>
+    </div>
+    <button id="start" type="button" class="btn btn-success">start</button>
+    <button id="stop" type="button" class="btn btn-danger">Stop</button>
+
+
+
+
+
+  </form>
+
+  <label id="status"></label>
+
+  <label id="error" style="color: red;"></label>
+
+  <script>
+
+
+  var  socket = io();
+
+
+
+  socket.on('status',function (status) {
+      $('#status').text(status);
+  });
+
+  socket.on('err',function (ss) {
+      $('#error').text(ss);
+  });
+
+
+
+  $("#start").on("click",function () {
+      $(this).attr('disabled', 'disabled');
+
+
+      var host = $('#url').val();
+      socket.emit('start',host);
+
+  });
+
+  </script>
+
+  </body>
+</html>
