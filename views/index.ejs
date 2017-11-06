@@ -62,6 +62,14 @@
 
   });
 
+  $("#stop").on("click",function () {
+      $('#start').removeAttr('disabled');
+
+
+      socket.emit('stop');
+
+  });
+
   </script>
 
   </body>

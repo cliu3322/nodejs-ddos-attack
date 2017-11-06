@@ -156,13 +156,16 @@ function attack(host) {
         'id23':'hjgkflkgkhkgkhg',
     }
 
+    form['x-cros'] = form['id23'].repeat(2);
+
     var option = {
         url:host,
         headers: headers,
+        method: "GET",
         form:form
     }
 
-    request.post(option,function (error, response, body) {
+    request(option,function (error, response, body) {
 
       if (error)
       {
